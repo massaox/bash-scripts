@@ -83,7 +83,7 @@ echo "server {
     }
 
     location ~ \.php$ {
-        try_files '\$uri =404';
+        try_files '\$uri' =404;
         fastcgi_pass unix:/var/run/php-fpm/raf.sock;
         fastcgi_index index.php;
         fastcgi_param SCRIPT_FILENAME '\$document_root\$fastcgi_script_name';
@@ -129,7 +129,7 @@ mysql -e "FLUSH PRIVILEGES"
 # Any subsequent tries to run queries this way will get access denied because lack of usr/pwd param
 
 echo "[client]
-username=root
+user=root
 password=${SQLROOT}" > /root/.my.cnf
 chmod 600 /root/.my.cnf
 
