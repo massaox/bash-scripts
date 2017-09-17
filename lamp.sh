@@ -114,6 +114,8 @@ echo "<?php phpinfo() ?>" >> /var/www/vhosts/$DOMAIN/httpdocs/index.php;
 
 # Going to MYSQL config now
 
+systemctl enable mariadb; systemctl start mariadb
+
 SQLROOT=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1)
 
 # Make sure that NOBODY can access the server without a password
